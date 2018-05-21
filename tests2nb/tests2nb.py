@@ -1,6 +1,9 @@
+import os
 import ast
 from . import unparse
 import sys
+
+from py2nb import tools, reader, converter
 
 def read_ast(s):
 	expr_ast = ast.parse(s)
@@ -18,6 +21,19 @@ def from_source_to_modified(filepath, output_path = None):
 	ast_node_mod = ast.fix_missing_locations(ast_node_mod)
 	from_ast_to_source(ast_node_mod, output_path)
 
+
+def pytests_to_notebook(input_filename, output_filename):
+	"""
+	Convert the given pytest source file into a properly formatted notebook.
+	"""
+	tmp_filepath = os.path.join(os.path.dirname(
+		__file__), './my_tmp_conv_file.py')
+	from_source_to_modified(input_filename, tmp_filepath)
+	cvt = reader.read(tmp_filepath)
+	converter.convert(cvt, output_filename)
+	os.remove(tmp_filepath)
+	pass
+	
 #--------------------------------------------
 # 	 NODE MODIFIERS 	 
 #--------------------------------------------
