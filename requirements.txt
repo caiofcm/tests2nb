@@ -1,0 +1,10 @@
+attrs==18.1.0
+colorama==0.3.9
+more-itertools==4.1.0
+pluggy==0.6.0
+py==1.5.3
+py2nb==0.0.3
+pytest==3.5.1
+six==1.11.0
+## !! Could not determine repository location
+tests2nb==0.0.1

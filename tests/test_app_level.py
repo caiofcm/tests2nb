@@ -15,3 +15,9 @@ def test_read_file_convert_to_nb():
 	cvt = reader.read(tmp_filepath)
 	converter.convert(cvt, 'out.ipynb')
 	assert(True == True)
+
+def main():
+	test_read_file_convert_to_nb()
+
+if __name__ == '__main__':
+	main()

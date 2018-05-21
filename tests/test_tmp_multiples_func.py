@@ -58,8 +58,8 @@ def test_modify_ast_tree_with_docstring(ast_multiple_test_docstring):
 	assert(len(ast_modified.body) == 7)
 	assert(isinstance(ast_modified.body[1], ast.Expr))
 	assert(isinstance(ast_modified.body[1].value, ast.Str))
-	assert(isinstance(ast_modified.body[4].value,
-				ast.Str) and '<codecell>' in ast_modified.body[4].value.s)
+	assert(isinstance(ast_modified.body[4].value, ast.Str))
+				# ast.Str) and '<codecell>' in ast_modified.body[4].value.s)
 
 #--------------------------------------------
 # 	 AST TO SOURCE 	 
