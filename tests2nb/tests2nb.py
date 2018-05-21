@@ -31,7 +31,8 @@ class TestFunctions(ast.NodeTransformer):
 	def visit_FunctionDef(self, node):
 		if node.name.startswith('test_'):
 			node_prepend = create_markdowncell_node(node, self.fun_prefixed_text)
-			return [node_prepend, node]
+			node_no_ds = remove_docstring_from_node(node)
+			return [node_prepend, node_no_ds]
 		return node
 
 def ast_test_func_prepend_docstring(ast_expr):
@@ -74,3 +75,10 @@ def create_node_ExpStr_markdowncell(string):
 
 def create_Expr_Str_node(string):
 	return ast.fix_missing_locations(ast.Expr(ast.Str(string)))
+
+
+def remove_docstring_from_node(node):
+	docstring = ast.get_docstring(node)
+	if docstring:
+		del node.body[0]
+	return node

@@ -46,6 +46,14 @@ def test_modify_ast_tree_with_docstring(ast_single_test_docstring):
 	assert(isinstance(ast_modified.body[0], ast.Expr))
 	assert(isinstance(ast_modified.body[0].value, ast.Str))
 
+def test_removed_docstring_from_function(ast_single_test_docstring):
+	ast_expr = ast_single_test_docstring
+	ast_modified = tests2nb.ast_test_func_prepend_docstring(ast_expr)
+	fun_node = ast_modified.body[1]
+	assert(isinstance(fun_node, ast.FunctionDef))
+	assert(isinstance(fun_node.body[0], ast.Expr) == False)
+
+
 
 @pytest.fixture()
 def ast_single_test_docstring_modified(ast_single_test_docstring):

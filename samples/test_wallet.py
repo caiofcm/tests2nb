@@ -29,10 +29,6 @@ def test_wallet_add_cash():
     wallet.add_cash(90)
     assert wallet.balance == 100
 
-"""
-An intermediary explanation
-"""
-
 def test_wallet_spend_cash():
     """
     Wallet should have a balance of 100 when initialized 
