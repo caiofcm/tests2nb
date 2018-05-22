@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/caiofcm/tests2nb.svg?branch=master)](https://travis-ci.org/caiofcm/tests2nb)
+
 # TESTS2NB: Python Tests To Notebook Converter
 
 This is a small utility for turning python test scripts into Jupyter notebooks.
