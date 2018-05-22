@@ -2,6 +2,7 @@ import pytest
 import os
 import sys
 from tests2nb import tests2nb
+from subprocess import call
 from py2nb import tools, reader, converter
 
 
@@ -38,6 +39,16 @@ def test_pytest_to_nb(ref_ipynb):
         )
 	tests2nb.pytests_to_notebook(filepath, 'out.ipynb')
 	with open('out.ipynb', 'r') as target:
+		out_converted = target.read()
+	assert(out_converted == ref_ipynb)
+
+def test_pytest_command(ref_ipynb):
+	filepath = os.path.join(
+            os.path.dirname(__file__),
+            '../samples/test_wallet.py'
+        )
+	call(['python', '-m', 'tests2nb', '../samples/test_wallet.py', 'out_.ipynb'])
+	with open('out_.ipynb', 'r') as target:
 		out_converted = target.read()
 	assert(out_converted == ref_ipynb)
 

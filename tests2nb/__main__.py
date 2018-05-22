@@ -1,10 +1,10 @@
 from __future__ import print_function, absolute_import
 
 import argparse
-from tests2nb.tests2nb import python_to_notebook
+from tests2nb.tests2nb import pytests_to_notebook
 
 description = """
-Convert literate python script into Jupyter Notebook
+Convert pytest script files into Jupyter Notebook
 """
 
 
@@ -14,7 +14,7 @@ def main():
     ap.add_argument("destination", help="output notebook filename")
     args = ap.parse_args()
     # Process
-    python_to_notebook(input_filename=args.source,
+    pytests_to_notebook(input_filename=args.source,
                        output_filename=args.destination)
 
 
