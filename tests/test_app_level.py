@@ -47,7 +47,7 @@ def test_pytest_command(ref_ipynb):
             os.path.dirname(__file__),
             '../samples/test_wallet.py'
         )
-	call(['python', '-m', 'tests2nb', '../samples/test_wallet.py', 'out_.ipynb'])
+	call(['python', '-m', 'tests2nb', filepath, 'out_.ipynb'])
 	with open('out_.ipynb', 'r') as target:
 		out_converted = target.read()
 	assert(out_converted == ref_ipynb)
