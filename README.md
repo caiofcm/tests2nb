@@ -1,20 +1,13 @@
-# PY2NB: Python To Notebook Converter
+# TESTS2NB: Python Tests To Notebook Converter
 
-This is a small utility for turning python scripts into Jupyter notebooks and
-convert module-level multi-line (triple quoted) string literals into Markdown
-cells. 
+This is a small utility for turning python test scripts into Jupyter notebooks.
 
 ## Why?
 
-I wanted a tool to create user examples that can be executed as normal python
-scripts so that they can be copy-and-pasted easily and can be rendered as
-notebook for better readability (e.g., nice styling, results embedded).
-
-Also,
-
-* Notebooks are nice to look at but slow to write; and
-* They do not play well with version control.
-
+Jupyter notebook are interactive and easier to read, thus it is a good resource
+to share and explore ideas. Tests can serve as living documentation for a code funcionality.
+I wanted a tool to aggregate the benefits of writing tests as regular pytest scripts but 
+being able to get a jupyter notebook for easer reading and exploring conditions.  
 
 ## Install
 
@@ -29,7 +22,7 @@ from it:
 
 ```bash
 git clone https://github.com/caiofcm/tests2nb.git
-pip install py2nb/
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -38,8 +31,7 @@ pip install py2nb/
 To convert a python test script into a notebook:
 
 ```bash
-
-to do...
+python -m tests2nb ../samples/test_wallet.py out_.ipynb
 ```
 
 ## Samples
@@ -48,4 +40,6 @@ See `tests` directory.
 
 ## How It Works
 
+- Uses `ast` to convert python tests to a intermediary python test file (thus original formatting is disregarded and comments are removed)
+- Uses [py2nb](https://github.com/sklam/py2nb/tree/master/py2nb) to convert the intermediary python file to jupyter notebook
 
